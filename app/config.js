@@ -14,7 +14,7 @@ require.config({
     jquerymobile : '../vendor/jquerymobile/jquerymobile',
     backbone : '../vendor/backbone/backbone',
     mustache : '../vendor/mustache/mustache',
-    text : '../vendor/js/requirejs/text/2.0.3/text'
+    text : '../vendor/text/text'
   },
 
   shim : {

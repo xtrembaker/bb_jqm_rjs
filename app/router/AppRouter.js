@@ -7,9 +7,9 @@ define(['backbone','views/HomeView','views/CguView','views/ContactView'], functi
   //return {};
   var AppRouter = Backbone.Router.extend({
     initialize : function(options){
-      $('#home').bind('pageinit', function(){
-        console.log('home paginit from router');
-      });
+//      $('#home').bind('pageinit', function(){
+//        console.log('home paginit from router');
+//      });
     },
     events : {
       'route:[name]' : 'test'
@@ -23,12 +23,15 @@ define(['backbone','views/HomeView','views/CguView','views/ContactView'], functi
     },
     home : function(){
       console.log('home route !');
-      this.homeView = new HomeView();
+//      this.homeView = new HomeView();
+//      this.homeView.render();
+      //$.mobile.changePage('template/home.html', { transition: "slideup", changeHash: false});
     },
     contact : function(){
       console.log('contact route !');
+      $.mobile.changePage('#contact', { transition: "slideup", changeHash: false});
       var contactView = new ContactView();
-      $.mobile.changePage('#contact');
+      //$.mobile.changePage('#contact');
     }
   });
   return AppRouter;
