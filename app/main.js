@@ -2,10 +2,10 @@ require([ "jquery","backbone",'router/AppRouter' ], function( $, Backbone, AppRo
   
   $(document).on('mobileinit', function(){
     console.log('mobileinit');
-//    $.mobile.ajaxEnabled = false;
-//    $.mobile.linkBindingEnabled = false;
-//    $.mobile.hashListeningEnabled = false;
-//    $.mobile.pushStateEnabled = false;
+    $.mobile.ajaxEnabled = false;
+    $.mobile.linkBindingEnabled = false;
+    $.mobile.hashListeningEnabled = false;
+    $.mobile.pushStateEnabled = false;
   });
   
     var test = new AppRouter();
@@ -14,9 +14,9 @@ require([ "jquery","backbone",'router/AppRouter' ], function( $, Backbone, AppRo
     
   require( [ "jquerymobile" ], function() {
     // Instantiates a new Backbone.js Mobile Router
-    //this.router = new Mobile();
-    console.log('jquerymobile is instanciated');
-    $.mobile.changePage('template/home.html', { transition: "slideup", changeHash: false});
+//    this.router = new Mobile();
+//    console.log('jquerymobile is instanciated');
+//    $.mobile.changePage('template/home.html', { transition: "slideup", changeHash: false});
 //    //console.log($.mobile.ajaxEnabled);
     Backbone.history.start();
    });

@@ -1,43 +1,24 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html>
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title></title>
 <!--        <link rel="" />-->
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css">
+        <link rel="stylesheet" href="../vendor/jquerymobile/jquerymobile.css">
         <script type="text/javascript" src="../vendor/jquery/jquery.js"></script>
         <script type="text/javascript" src="../vendor/jquerymobile/jquerymobile.js"></script>
-<!--        <script type="text/javascript" src="./main.js"></script>-->
-        <!-- Place favicon.ico and apple-touch-icon(s) in the root directory -->
-
-<!--        <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/main.css">
-        <script src="js/vendor/modernizr-2.6.2.min.js"></script>-->
-<!--        <script type="text/javascript" data-main="config" src="../vendor/requirejs/requirejs.js"></script>-->
     </head>
     <body>
       <div id="toto" data-role="page">
-<!--        <div data-role="header"></div>
-        <div data-role="content"></div>
-        <div data-role="footer"></div>-->
+        toto !
       </div>
-<!--      <div id="home" data-role="page"></div>
-      
-      <div id="contact" data-role="page">
-        contactPage
-      </div>
-      
-      <div id="cgu" data-role="page">
-        cgu page
-      </div>-->
+      <script>
+        $(document).bind('pageinit', function(){
+          console.log('pageinit');
+          $.mobile.changePage('template/home.html', { transition: "slideup", changeHash: false });
+        });
+      </script>
     </body>
-    <script type="text/javascript">
-      $(document).bind('pageinit', function(){
-        console.log('pageinit');
-        $.mobile.changePage('template/home.html', { transition: "slideup", changeHash: false });
-      });
-    </script>
 </html>

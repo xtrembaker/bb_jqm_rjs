@@ -1,4 +1,4 @@
-define([ "jquery","backbone" ,'text!template/home.html'], function( $, Backbone, TmplHome) {
+define([ "jquery","backbone" ,'models/HomeModel','text!template/home.html'], function( $, Backbone,HomeModel, TmplHome) {
   var HomeView = Backbone.View.extend({
 //    events : {
 //      'pageinit #home' : 'test'
@@ -11,13 +11,18 @@ define([ "jquery","backbone" ,'text!template/home.html'], function( $, Backbone,
     el : '#home',
     template : _.template(TmplHome),
     render : function(){
+      var homeModel = new HomeModel();
+      homeModel.fetch();
+//      for(var i=0;i<=1000000;i++){
+//        console.log('yeah !');
+//      }
 //      $.mobile.loading('show',{
 //        text : 'coucou',
 //        textVisible : true
 //      });
-//      this.$el.html(this.template);
+      this.$el.html(this.template);
 //      $.mobile.loading('hide');
-//      console.log('render home');
+      console.log('render home');
 //      $.mobile.changePage('template/home.html', { transition: "slideup", changeHash: false});
 
 //      var that = this;

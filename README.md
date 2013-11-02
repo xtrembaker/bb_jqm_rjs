@@ -9,4 +9,7 @@ A savoir :
 
 $.mobile.activePage.attr(); Ne fonctionne pas au "pageinit", il faut que la page soit déjà "chargée" (fonctionne pour sur au pageshow())
 
-changePage() Ne fonctionne QUE SI la CSS de jQuery Mobile est chargée (Surement parce que l'effet de transition est fait en CSS - j'imagine !)
+Comment fonctionne changePage():
+- La CSS de jQuery Mobile DOIT être chargé
+- la page appelé DOIT contenir un data-role="page"
+- Ne pas utiliser changePage sur un $(document).bind('pageinit') car l'événement serait appelé 2 fois (une fois au chargement de l'url, une autre fois au chargement du changePage()). Vous pouvez toutefois l'utiliser sur un élément
