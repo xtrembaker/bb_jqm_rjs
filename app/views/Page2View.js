@@ -1,9 +1,8 @@
-define([ "jquery","backbone",'text!template/page2.html' ], function( $, Backbone, TmplPage2) {
-  var Page2View = Backbone.View.extend({
+define([ "jquery","backbone",'views/AppView','text!template/page2.html' ], function( $, Backbone, AppView,TmplPage2) {
+  var Page2View = AppView.extend({
     el : '#page2',
     template : _.template(TmplPage2),
     render: function(){
-      console.log('page2 render');
       this.$el.html(this.template);
     }
   });

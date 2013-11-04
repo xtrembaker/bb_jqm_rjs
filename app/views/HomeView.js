@@ -1,5 +1,6 @@
-define([ "jquery","backbone" ,'models/HomeModel','text!template/home.html'], function( $, Backbone,HomeModel, TmplHome) {
-  var HomeView = Backbone.View.extend({
+define([ "jquery","backbone" ,'views/AppView','models/HomeModel','text!template/home.html'], function( $, Backbone,AppView,HomeModel, TmplHome) {
+  //var AppView = new AppView();
+  var HomeView = AppView.extend({
 //    events : {
 //      'pageinit #home' : 'test'
 //      //'click .civiliz-thumbUp' : 'rateUp',
@@ -11,8 +12,17 @@ define([ "jquery","backbone" ,'models/HomeModel','text!template/home.html'], fun
     el : '#home',
     template : _.template(TmplHome),
     render : function(){
+      this.resetView();
+      //this.beforeRender();
       var homeModel = new HomeModel();
-      homeModel.fetch();
+      console.log('HomeModel');
+      console.log(homeModel);
+      homeModel.fetch({
+        success : function(model, response, options){
+          console.log(response);
+          $('#resultHome').html(JSON.stringify(response));
+        }
+      });
 //      for(var i=0;i<=1000000;i++){
 //        console.log('yeah !');
 //      }
@@ -36,6 +46,9 @@ define([ "jquery","backbone" ,'models/HomeModel','text!template/home.html'], fun
 //        $.mobile.loading('hide');
 //      }, 10000);
       
+    },
+    resetView : function(){
+      $('#resultHome').html();
     }
   });
   

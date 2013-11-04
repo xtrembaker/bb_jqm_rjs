@@ -1,5 +1,5 @@
-define([ "jquery","backbone",'text!template/page1.html' ], function( $, Backbone, TmplPage1) {
-  var Page1View = Backbone.View.extend({
+define([ "jquery","backbone",'views/AppView','text!template/page1.html' ], function( $, Backbone,AppView, TmplPage1) {
+  var Page1View = AppView.extend({
     el : '#page1',
     template : _.template(TmplPage1),
     pageinit : function(){
