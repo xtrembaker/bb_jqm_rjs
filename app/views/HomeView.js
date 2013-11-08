@@ -6,23 +6,38 @@ define([ "jquery","backbone" ,'views/AppView','models/HomeModel','text!template/
 //      //'click .civiliz-thumbUp' : 'rateUp',
 //      //'click .civiliz-thumbDown' : 'rateDown'
 //    },
+    homeModel : {},
     test: function(){
       alert('test');
     },
     el : '#home',
     template : _.template(TmplHome),
-    render : function(){
+    pageBeforeShow : function(){
+      this.homeModel = new HomeModel();
+      //this.homeModel.loader.show();
+      console.log('pageBeforeShow from HomeView');
+      console.log(this);
       this.resetView();
       //this.beforeRender();
-      var homeModel = new HomeModel();
-      console.log('HomeModel');
-      console.log(homeModel);
-      homeModel.fetch({
+      
+      this.homeModel.fetch({
         success : function(model, response, options){
           console.log(response);
           $('#resultHome').html(JSON.stringify(response));
         }
       });
+//      $.when.apply(
+//        $,
+//        [homeModel.fetch({
+//          success : function(model, response, options){
+//            console.log(response);
+//            $('#resultHome').html(JSON.stringify(response));
+//          }
+//        })]
+//      ).done(function(){
+//          console.log('deferred is done !');
+//      });
+      
 //      for(var i=0;i<=1000000;i++){
 //        console.log('yeah !');
 //      }
@@ -30,9 +45,12 @@ define([ "jquery","backbone" ,'views/AppView','models/HomeModel','text!template/
 //        text : 'coucou',
 //        textVisible : true
 //      });
-      this.$el.html(this.template);
 //      $.mobile.loading('hide');
       console.log('render home');
+      //AppView.prototype.pageBeforeShow();
+    },
+    pageShow : function(){
+      this.$el.html(this.template);
 //      $.mobile.changePage('template/home.html', { transition: "slideup", changeHash: false});
 
 //      var that = this;
@@ -45,7 +63,7 @@ define([ "jquery","backbone" ,'views/AppView','models/HomeModel','text!template/
 //        that.$el.html(that.template);
 //        $.mobile.loading('hide');
 //      }, 10000);
-      
+      //this.render();
     },
     resetView : function(){
       $('#resultHome').html();
