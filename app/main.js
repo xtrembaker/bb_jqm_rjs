@@ -74,7 +74,7 @@ require([ "jquery","backbone",'router/AppRouter' ], function( $, Backbone, AppRo
     
     var dbWorker = new Worker("workers/DatabaseWorker.js");
     dbWorker.onmessage = function(event){
-      console.log('creation de la db depuis le worker '+event.data);
+      $('#home').append('<p>creation de la db depuis le worker '+event.data+'</p>');
     }
     dbWorker.postMessage(workerCreateDb);
     
@@ -92,6 +92,35 @@ require([ "jquery","backbone",'router/AppRouter' ], function( $, Backbone, AppRo
     });
     
     dbWorker.postMessage(insert);
+    
+    setInterval(function(){
+      $('#home').append('<p>connexion is '+navigator.onLine+'</p>');
+    }, 5000);
+    
+    setInterval(function(){
+      var imageAddr = "https://s3-eu-west-1.amazonaws.com/civiliz-dev/places/o_2ce6f2a3f44886fb26756ec74ff247b9.jpeg" + "?n=" + Math.random();
+      var startTime, endTime;
+      var downloadSize = 302814;
+      var download = new Image();
+      download.onload = function () {
+          endTime = (new Date()).getTime();
+          showResults();
+      }
+      startTime = (new Date()).getTime();
+      download.src = imageAddr;
+
+      function showResults() {
+        var duration = Math.round((endTime - startTime) / 1000);
+        var bitsLoaded = downloadSize * 8;
+        var speedBps = Math.round(bitsLoaded / duration);
+        var speedKbps = (speedBps / 1024).toFixed(2);
+        var speedMbps = (speedKbps / 1024).toFixed(2);
+        $('#home').append("<p>Your connection speed is: \n" + 
+               speedBps + " bps\n"   + 
+               speedKbps + " kbps\n" + 
+               speedMbps + " Mbps\n</p>" );
+      }
+    }, 5000);
     
     //openDatabase('mytestdb', '1.0', 'my first database', 2 * 1024 * 1024);
     
