@@ -97,7 +97,9 @@ require([ "jquery","backbone",'router/AppRouter' ], function( $, Backbone, AppRo
       $('#home').append('<p>connexion is '+navigator.onLine+'</p>');
     }, 5000);
     
-    setInterval(function(){
+    //setInterval(function(){
+    
+    var loadImg = function(){
       var imageAddr = "https://s3-eu-west-1.amazonaws.com/civiliz-dev/places/o_2ce6f2a3f44886fb26756ec74ff247b9.jpeg" + "?n=" + Math.random();
       var startTime, endTime;
       var downloadSize = 302814;
@@ -119,8 +121,13 @@ require([ "jquery","backbone",'router/AppRouter' ], function( $, Backbone, AppRo
                speedBps + " bps\n"   + 
                speedKbps + " kbps\n" + 
                speedMbps + " Mbps\n</p>" );
+        setTimeout(function(){
+          loadImg()
+        }, 3000);
       }
-    }, 5000);
+    };
+    
+    loadImg();
     
     //openDatabase('mytestdb', '1.0', 'my first database', 2 * 1024 * 1024);
     
